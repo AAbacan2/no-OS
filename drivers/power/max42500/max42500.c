@@ -46,6 +46,7 @@
 #include "no_os_util.h"
 #include "no_os_alloc.h"
 #include "no_os_crc8.h"
+#include "no_os_delay.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -198,7 +199,7 @@ int max42500_reg_update(struct max42500_dev *desc,
 	ret = max42500_reg_read(desc, reg_addr, &reg_data);
 	if (ret)
 		return ret;
-
+	no_os_udelay(100);
 	reg_data &= ~mask;
 	reg_data |= mask & data;
 
@@ -550,6 +551,8 @@ int max42500_set_watchdog_enable(struct max42500_dev *desc, bool wd_enable)
 	else
 		reg_val &= ~NO_OS_BIT(3);
 
+	no_os_udelay(70);
+	
 	return max42500_reg_write(desc, MAX42500_REG_WDCFG2, reg_val);
 }
 
