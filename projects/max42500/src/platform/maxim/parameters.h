@@ -39,6 +39,10 @@
 #ifndef __PARAMETERS_H__
 #define __PARAMETERS_H__
 
+#ifdef IIO_SUPPORT
+#define INTC_DEVICE_ID 0
+#endif
+
 /* MAX42500 parameters */
 #define MAX42500_I2C_DEVICE_ID  (0)
 #define MAX42500_I2C_CLK_SPEED  (400000)

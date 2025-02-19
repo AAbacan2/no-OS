@@ -36,8 +36,12 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
-#if defined(BASIC_EXAMPLE)
+#ifdef BASIC_EXAMPLE
 #include "basic_example.h"
+#endif
+
+#ifdef IIO_EXAMPLE
+#include "iio_example.h"
 #endif
 
 /*******************************************************************************
@@ -48,9 +52,20 @@
 
 int main()
 {
-#if defined(BASIC_EXAMPLE)
+	
+#ifdef BASIC_EXAMPLE
 	return basic_example_main();
-#else
-	return 0;
 #endif
+
+#ifdef IIO_EXAMPLE
+	return iio_example_main();
+#endif
+
+#if (BASIC_EXAMPLE + IIO_EXAMPLE == 0)
+#error At least one example has to be selected using y value in Makefile.
+#elif (BASIC_EXAMPLE + IIO_EXAMPLE > 1)
+#error Selected example projects cannot be enabled at the same time. \
+Please enable only one example and rebuild the project.
+#endif
+
 }
