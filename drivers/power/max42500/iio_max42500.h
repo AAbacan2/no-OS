@@ -64,7 +64,7 @@ struct max42500_iio_dev_init_param {
  * @return 0 in case of success, an error code otherwise.
  */
 int max42500_iio_init(struct max42500_iio_dev **iio_dev,
-		     struct max42500_iio_dev_init_param *init_param);
+		      struct max42500_iio_dev_init_param *init_param);
 
 /**
  * @brief Free resources allocated by the init function.

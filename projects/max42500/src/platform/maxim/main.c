@@ -52,7 +52,7 @@
 
 int main()
 {
-	
+
 #ifdef BASIC_EXAMPLE
 	return basic_example_main();
 #endif

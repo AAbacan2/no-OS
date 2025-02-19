@@ -251,23 +251,23 @@ static const char *const max42500_wd_mr1[] = {
 };
 
 static int max42500_iio_get_state(void *dev, char *buf, uint32_t len,
-				     const struct iio_ch_info *channel);
+				  const struct iio_ch_info *channel);
 static int max42500_iio_set_state(void *dev, char *buf, uint32_t len,
-				     const struct iio_ch_info *channel);
+				  const struct iio_ch_info *channel);
 static int max42500_iio_reg_read(void *dev, uint32_t reg, uint32_t *readval);
 static int max42500_iio_reg_write(void *dev, uint32_t reg, uint32_t writeval);
 static int max42500_iio_read_config2(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
+				     const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_vmon(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
+				  const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_write_vmon(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv);
+				   const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_rstmap(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_write_rstmap(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);					
-static int max42500_iio_set_nominal_voltage(void *dev, char *buf, uint32_t len,
 				    const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_write_rstmap(void *dev, char *buf, uint32_t len,
+				     const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_set_nominal_voltage(void *dev, char *buf, uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_get_nominal_voltage(void *dev, char *buf, uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_comp_statoff(void *dev, char *buf, uint32_t len,
@@ -277,60 +277,65 @@ static int max42500_iio_read_comp_statuv(void *dev, char *buf, uint32_t len,
 static int max42500_iio_read_comp_statov(void *dev, char *buf, uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_get_ovthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_set_ovthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_get_ovthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_set_ovthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_get_uvthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_set_uvthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_get_uvthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_set_uvthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_fpsstat1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv);
+				      const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_fpsconfig(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
+				       const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_write_fpsconfig(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_read_power_up_timestamp(void *dev, char *buf, uint32_t len,
+					const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_read_power_up_timestamp(void *dev, char *buf,
+		uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_read_power_down_timestamp(void *dev, char *buf, uint32_t len,
+static int max42500_iio_read_power_down_timestamp(void *dev, char *buf,
+		uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_wdtstat(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
+				     const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_wdcdiv(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
+				    const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_write_wdcdiv(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv);
+				     const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_read_wdcfg1(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_write_1ud(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_read_wdkey(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_set_watchdog_enable(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv);
-static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info*channel, intptr_t priv);				
-static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info *channel, intptr_t priv);	
-static int max42500_iio_read_rstctrl(void *dev, char *buf, uint32_t len,
 				    const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
+				     const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
+				 const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_write_1ud(void *dev, char *buf, uint32_t len,
+				  const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_read_wdkey(void *dev, char *buf, uint32_t len,
+				   const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_set_watchdog_enable(void *dev, char *buf, uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info*channel, intptr_t priv);
+static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv);
+static int max42500_iio_read_rstctrl(void *dev, char *buf, uint32_t len,
+				     const struct iio_ch_info *channel, intptr_t priv);
 static int max42500_iio_write_rstctrl(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv);				
-				 
+				      const struct iio_ch_info *channel, intptr_t priv);
+
 static struct iio_attribute const max42500_channel_attrs[] = {
 	{
 		.name = "vm1",
@@ -343,7 +348,7 @@ static struct iio_attribute const max42500_channel_attrs[] = {
 		.store = max42500_iio_set_nominal_voltage,
 		.show = max42500_iio_get_nominal_voltage,
 		.priv = MAX42500_VM2,
-	},	
+	},
 	{
 		.name = "vm3",
 		.store = max42500_iio_set_nominal_voltage,
@@ -373,7 +378,7 @@ static struct iio_attribute const max42500_channel_attrs[] = {
 		.store = max42500_iio_set_ovthresh1,
 		.show = max42500_iio_get_ovthresh1,
 		.priv = MAX42500_VM2,
-	},	
+	},
 	{
 		.name = "vm3_threshov",
 		.store = max42500_iio_set_ovthresh1,
@@ -415,7 +420,7 @@ static struct iio_attribute const max42500_channel_attrs[] = {
 		.store = max42500_iio_set_uvthresh1,
 		.show = max42500_iio_get_uvthresh1,
 		.priv = MAX42500_VM2,
-	},	
+	},
 	{
 		.name = "vm3_threshuv",
 		.store = max42500_iio_set_uvthresh1,
@@ -446,7 +451,7 @@ static struct iio_attribute const max42500_channel_attrs[] = {
 		.show = max42500_iio_get_uvthresh2,
 		.priv = MAX42500_VM7,
 	},
-	
+
 };
 
 static struct iio_attribute max42500_debug_attrs[] = {
@@ -714,11 +719,11 @@ static struct iio_attribute max42500_debug_attrs[] = {
 		.name = "watchdog_key",
 		.show = max42500_iio_read_wdkey,
 	},
-	
-	
-	
-	
-	
+
+
+
+
+
 	END_ATTRIBUTES_ARRAY
 };
 
@@ -823,7 +828,7 @@ static struct iio_attribute max42500_global_attrs[] = {
 		.store = max42500_iio_write_rstmap,
 		.show = max42500_iio_read_rstmap,
 		.priv = MAX42500_VM7
-	},	
+	},
 	{
 		.name = "uval",
 		.show = max42500_iio_read_fpsconfig,
@@ -946,16 +951,16 @@ static struct iio_device max42500_iio_dev = {
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_get_state(void *dev, char *buf, uint32_t len,
-				     const struct iio_ch_info *channel)
+				  const struct iio_ch_info *channel)
 {
 	int ret;
 	uint8_t state;
 	uint8_t en0;
-    uint8_t en1;
+	uint8_t en1;
 	uint32_t num_values = NO_OS_ARRAY_SIZE(max42500_pin_state);
 	struct max42500_iio_dev *iio_max42500;
 	struct max42500_dev *max42500;
-	
+
 	if (!dev)
 		return -EINVAL;
 
@@ -963,23 +968,23 @@ static int max42500_iio_get_state(void *dev, char *buf, uint32_t len,
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = no_os_gpio_get_value(max42500->en0, &en0);
-    if (ret)
-        return ret;
+	if (ret)
+		return ret;
 
-    ret = no_os_gpio_get_value(max42500->en1, &en1);
-    if (ret)
-        return ret;
-	
+	ret = no_os_gpio_get_value(max42500->en1, &en1);
+	if (ret)
+		return ret;
+
 	if (en0 == NO_OS_GPIO_LOW && en1 == NO_OS_GPIO_LOW) {
-        state = MAX42500_STATE_OFF;
-    } else if (en0 == NO_OS_GPIO_HIGH && en1 == NO_OS_GPIO_LOW) {
-        state = MAX42500_STATE_SLEEP;
-    } else if (en0 == NO_OS_GPIO_HIGH && en1 == NO_OS_GPIO_HIGH) {
-        state = MAX42500_STATE_ON;
-    } else {
-        return -EINVAL;
-    }
-	
+		state = MAX42500_STATE_OFF;
+	} else if (en0 == NO_OS_GPIO_HIGH && en1 == NO_OS_GPIO_LOW) {
+		state = MAX42500_STATE_SLEEP;
+	} else if (en0 == NO_OS_GPIO_HIGH && en1 == NO_OS_GPIO_HIGH) {
+		state = MAX42500_STATE_ON;
+	} else {
+		return -EINVAL;
+	}
+
 	return sprintf(buf, "%s", max42500_pin_state[state]);
 }
 
@@ -993,14 +998,14 @@ static int max42500_iio_get_state(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_state(void *dev, char *buf, uint32_t len,
-				     const struct iio_ch_info *channel)
+				  const struct iio_ch_info *channel)
 {
 	int ret;
 	uint8_t value;
 	uint32_t num_values = NO_OS_ARRAY_SIZE(max42500_pin_state);
 	struct max42500_iio_dev *iio_max42500;
 	struct max42500_dev *max42500;
-	
+
 
 	if (!dev)
 		return -EINVAL;
@@ -1073,7 +1078,7 @@ static int max42500_iio_reg_write(void *dev, uint32_t reg, uint32_t writeval)
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_config2(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1093,21 +1098,29 @@ static int max42500_iio_read_config2(void *dev, char *buf, uint32_t len,
 
 	switch (priv) {
 	case MAX42500_BSTU:
-		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(BSTU_MASK, value)]);
+		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(BSTU_MASK,
+				value)]);
 	case MAX42500_BSTO:
-		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(BSTO_MASK, value)]);
+		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(BSTO_MASK,
+				value)]);
 	case MAX42500_EN0:
-		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(EN0_MASK, value)]);
+		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(EN0_MASK,
+				value)]);
 	case MAX42500_EN1:
-		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(EN1_MASK, value)]);
+		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(EN1_MASK,
+				value)]);
 	case MAX42500_RST:
-		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(RST_MASK, value)]);
+		return sprintf(buf, "%s", max42500_comp_status[no_os_field_get(RST_MASK,
+				value)]);
 	case MAX42500_RSTF:
-		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(RSTF_MASK, value)]);
+		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(RSTF_MASK,
+				value)]);
 	case MAX42500_PAR:
-		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(PAR_MASK, value)]);
+		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(PAR_MASK,
+				value)]);
 	case MAX42500_CLKF:
-		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(CLKF_MASK, value)]);
+		return sprintf(buf, "%s", max42500_fault_status[no_os_field_get(CLKF_MASK,
+				value)]);
 	}
 }
 
@@ -1122,7 +1135,7 @@ static int max42500_iio_read_config2(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_vmon(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				  const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1166,7 +1179,7 @@ static int max42500_iio_read_vmon(void *dev, char *buf, uint32_t len,
 		value = no_os_field_get(VMPD_MASK, reg_data);
 		break;
 	}
-	
+
 	return sprintf(buf, "%s", max42500_state[value]);
 }
 
@@ -1181,7 +1194,7 @@ static int max42500_iio_read_vmon(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_vmon(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				   const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -1225,9 +1238,9 @@ static int max42500_iio_write_vmon(void *dev, char *buf, uint32_t len,
 		mask = VMPD_MASK;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_VMON, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_VMON, mask,
+			    no_os_field_prep(mask, value));
 }
 
 /**
@@ -1241,7 +1254,7 @@ static int max42500_iio_write_vmon(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_rstmap(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				    const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1285,7 +1298,7 @@ static int max42500_iio_read_rstmap(void *dev, char *buf, uint32_t len,
 		value = no_os_field_get(PARM_MASK, reg_data);
 		break;
 	}
-	
+
 	return sprintf(buf, "%s", max42500_state[value]);
 }
 
@@ -1300,7 +1313,7 @@ static int max42500_iio_read_rstmap(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_rstmap(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -1344,9 +1357,9 @@ static int max42500_iio_write_rstmap(void *dev, char *buf, uint32_t len,
 		mask = PARM_MASK;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_RSTMAP, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_RSTMAP, mask,
+			    no_os_field_prep(mask, value));
 }
 
 /**
@@ -1379,10 +1392,10 @@ static int max42500_iio_get_nominal_voltage(void *dev, char *buf, uint32_t len,
 
 	if (ret)
 		return ret;
-	
+
 	if ((value < REG_MIN) || (value > REG_MAX))
 		return -EINVAL;
-	
+
 	switch (priv) {
 	case MAX42500_VM1:
 	case MAX42500_VM2:
@@ -1396,7 +1409,7 @@ static int max42500_iio_get_nominal_voltage(void *dev, char *buf, uint32_t len,
 	default:
 		return -EINVAL;
 	}
-	
+
 	return snprintf(buf, len, "%.4fV", voltage);
 }
 
@@ -1411,7 +1424,7 @@ static int max42500_iio_get_nominal_voltage(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_nominal_voltage(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t dec, fract;
@@ -1430,10 +1443,10 @@ static int max42500_iio_set_nominal_voltage(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-    value = (double)dec + ((double)fract / MICRO);
+	value = (double)dec + ((double)fract / MICRO);
 	//precision correction
 	value +=  0.000001;
-	
+
 	return max42500_set_nominal_voltage(max42500, priv, value);
 }
 
@@ -1462,7 +1475,7 @@ static int max42500_iio_read_comp_statoff(void *dev, char *buf, uint32_t len,
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = max42500_get_comp_status(max42500, priv, MAX42500_COMP_STAT_OFF,
-			     &value);
+				       &value);
 	if (ret)
 		return ret;
 
@@ -1494,7 +1507,7 @@ static int max42500_iio_read_comp_statuv(void *dev, char *buf, uint32_t len,
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = max42500_get_comp_status(max42500, priv, MAX42500_COMP_STAT_UV,
-			     &value);
+				       &value);
 	if (ret)
 		return ret;
 
@@ -1526,7 +1539,7 @@ static int max42500_iio_read_comp_statov(void *dev, char *buf, uint32_t len,
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = max42500_get_comp_status(max42500, priv, MAX42500_COMP_STAT_OV,
-			     &value);
+				       &value);
 	if (ret)
 		return ret;
 
@@ -1544,7 +1557,7 @@ static int max42500_iio_read_comp_statov(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_get_ovthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1562,9 +1575,9 @@ static int max42500_iio_get_ovthresh1(void *dev, char *buf, uint32_t len,
 	ret = max42500_reg_read(max42500, reg_addr, &value);
 	if (ret)
 		return ret;
-	
+
 	thresh = 102.5 + (0.5 * (uint8_t)no_os_field_get(OV_MASK, value));
-	
+
 	return snprintf(buf, len, "%.1f%%", thresh);
 }
 
@@ -1579,7 +1592,7 @@ static int max42500_iio_get_ovthresh1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_ovthresh1(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t dec, fract;
@@ -1597,7 +1610,7 @@ static int max42500_iio_set_ovthresh1(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-    value = dec + ((double)fract / MICRO);
+	value = dec + ((double)fract / MICRO);
 
 	return max42500_set_ov_thresh1(max42500, priv, value);
 }
@@ -1613,7 +1626,7 @@ static int max42500_iio_set_ovthresh1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_get_ovthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1642,9 +1655,9 @@ static int max42500_iio_get_ovthresh2(void *dev, char *buf, uint32_t len,
 	ret = max42500_reg_read(max42500, reg_addr, &value);
 	if (ret)
 		return ret;
-	
+
 	thresh = MAX42500_MIN_THRESH_VM6_V7 + (0.005 * value);
-	
+
 	return snprintf(buf, len, "%.3fV", thresh);
 }
 
@@ -1659,7 +1672,7 @@ static int max42500_iio_get_ovthresh2(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_ovthresh2(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t dec, fract;
@@ -1677,7 +1690,7 @@ static int max42500_iio_set_ovthresh2(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-    value = dec + ((double)fract / MICRO);
+	value = dec + ((double)fract / MICRO);
 	//precision correction
 	value +=  0.000001;
 
@@ -1695,7 +1708,7 @@ static int max42500_iio_set_ovthresh2(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_get_uvthresh1(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1713,9 +1726,9 @@ static int max42500_iio_get_uvthresh1(void *dev, char *buf, uint32_t len,
 	ret = max42500_reg_read(max42500, reg_addr, &value);
 	if (ret)
 		return ret;
-	
+
 	thresh = 97.5 - (0.5 * (uint8_t)no_os_field_get(UV_MASK, value));
-	
+
 	return snprintf(buf, len, "%.1f%%", thresh);
 }
 
@@ -1730,7 +1743,7 @@ static int max42500_iio_get_uvthresh1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_uvthresh1(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t dec, fract;
@@ -1748,7 +1761,7 @@ static int max42500_iio_set_uvthresh1(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-    value = dec + ((double)fract / MICRO);
+	value = dec + ((double)fract / MICRO);
 
 	return max42500_set_uv_thresh1(max42500, priv, value);
 }
@@ -1764,7 +1777,7 @@ static int max42500_iio_set_uvthresh1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_get_uvthresh2(void *dev, char *buf, uint32_t len,
-		const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1793,9 +1806,9 @@ static int max42500_iio_get_uvthresh2(void *dev, char *buf, uint32_t len,
 	ret = max42500_reg_read(max42500, reg_addr, &value);
 	if (ret)
 		return ret;
-	
+
 	thresh = MAX42500_MIN_THRESH_VM6_V7 + (0.005 * value);
-	
+
 	return snprintf(buf, len, "%.3fV", thresh);
 }
 
@@ -1810,7 +1823,7 @@ static int max42500_iio_get_uvthresh2(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_uvthresh2(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t dec, fract;
@@ -1828,7 +1841,7 @@ static int max42500_iio_set_uvthresh2(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-    value = dec + ((double)fract / MICRO);
+	value = dec + ((double)fract / MICRO);
 	//precision correction
 	value +=  0.000001;
 
@@ -1846,7 +1859,7 @@ static int max42500_iio_set_uvthresh2(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_fpsstat1(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1899,7 +1912,7 @@ static int max42500_iio_read_fpsstat1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_fpsconfig(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				       const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -1955,7 +1968,7 @@ static int max42500_iio_read_fpsconfig(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_fpsconfig(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+					const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -1993,9 +2006,9 @@ static int max42500_iio_write_fpsconfig(void *dev, char *buf, uint32_t len,
 		mask = FDIV_MASK;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_FPSCFG1, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_FPSCFG1, mask,
+			    no_os_field_prep(mask, value));
 }
 
 /**
@@ -2008,7 +2021,8 @@ static int max42500_iio_write_fpsconfig(void *dev, char *buf, uint32_t len,
  * @return ret    - Result of the reading procedure.
  * 		    In case of success, the size of the read data is returned.
 */
-static int max42500_iio_read_power_up_timestamp(void *dev, char *buf, uint32_t len,
+static int max42500_iio_read_power_up_timestamp(void *dev, char *buf,
+		uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
@@ -2039,7 +2053,8 @@ static int max42500_iio_read_power_up_timestamp(void *dev, char *buf, uint32_t l
  * @return ret    - Result of the reading procedure.
  * 		    In case of success, the size of the read data is returned.
 */
-static int max42500_iio_read_power_down_timestamp(void *dev, char *buf, uint32_t len,
+static int max42500_iio_read_power_down_timestamp(void *dev, char *buf,
+		uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
@@ -2071,7 +2086,7 @@ static int max42500_iio_read_power_down_timestamp(void *dev, char *buf, uint32_t
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_wdtstat(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2117,7 +2132,7 @@ static int max42500_iio_read_wdtstat(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_wdcdiv(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				    const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2142,7 +2157,7 @@ static int max42500_iio_read_wdcdiv(void *dev, char *buf, uint32_t len,
 		break;
 	case MAX42500_WDIV:
 		value = no_os_field_get(WDIV_MASK, reg_data);
-		return sprintf(buf, "%dus", WDT_BASE_TO*(value + 1));
+		return sprintf(buf, "%dus", WDT_BASE_TO * (value + 1));
 		break;
 	}
 }
@@ -2158,7 +2173,7 @@ static int max42500_iio_read_wdcdiv(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_wdcdiv(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -2188,9 +2203,9 @@ static int max42500_iio_write_wdcdiv(void *dev, char *buf, uint32_t len,
 			value = (value / WDT_BASE_TO) - 1;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_WDCDIV, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_WDCDIV, mask,
+			    no_os_field_prep(mask, value));
 }
 
 /**
@@ -2204,7 +2219,7 @@ static int max42500_iio_write_wdcdiv(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_wdcfg1(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				    const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2224,7 +2239,7 @@ static int max42500_iio_read_wdcfg1(void *dev, char *buf, uint32_t len,
 		return ret;
 	clkdiv = no_os_field_get(WDIV_MASK, reg_data);
 	no_os_udelay(70);
-	
+
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDCFG1, &reg_data);
 	if (ret)
 		return ret;
@@ -2237,8 +2252,8 @@ static int max42500_iio_read_wdcfg1(void *dev, char *buf, uint32_t len,
 		value = no_os_field_get(OPN_MASK, reg_data);
 		break;
 	}
-	
-	return sprintf(buf, "%dus", WDT_BASE_TO * (clkdiv + 1)* 8 *(value + 1));
+
+	return sprintf(buf, "%dus", WDT_BASE_TO * (clkdiv + 1) * 8 * (value + 1));
 }
 
 /**
@@ -2252,7 +2267,7 @@ static int max42500_iio_read_wdcfg1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -2275,15 +2290,15 @@ static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDCDIV, &reg_data);
 	if (ret)
 		return ret;
-		clkdiv = no_os_field_get(WDIV_MASK, reg_data);
-	no_os_udelay(70);	
-	
-	if ((value > ((clkdiv + 1)* WDT_BASE_TO * 8 * WDT_WINDOW_MAX)) ||
-			(value < ((clkdiv + 1)* WDT_BASE_TO * 8 * WDT_WINDOW_MIN)))
+	clkdiv = no_os_field_get(WDIV_MASK, reg_data);
+	no_os_udelay(70);
+
+	if ((value > ((clkdiv + 1) * WDT_BASE_TO * 8 * WDT_WINDOW_MAX)) ||
+	    (value < ((clkdiv + 1) * WDT_BASE_TO * 8 * WDT_WINDOW_MIN)))
 		return -EINVAL;
 	else
 		value = (value / (WDT_BASE_TO * 8 * (clkdiv + 1))) - 1;
-	
+
 	switch (priv) {
 	case MAX42500_CLO:
 		mask = CLO_MASK;
@@ -2292,9 +2307,9 @@ static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
 		mask = OPN_MASK;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_WDCFG1, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_WDCFG1, mask,
+			    no_os_field_prep(mask, value));
 }
 
 /**
@@ -2308,7 +2323,7 @@ static int max42500_iio_write_wdcfg1(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				 const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2316,7 +2331,7 @@ static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
 	uint8_t clkdiv;
 	uint8_t ud_val;
 	uint32_t wdt_per;
-	
+
 	struct max42500_iio_dev *iio_max42500;
 	struct max42500_dev *max42500;
 
@@ -2331,19 +2346,21 @@ static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
 		return ret;
 	clkdiv = no_os_field_get(WDIV_MASK, reg_data);
 	no_os_udelay(70);
-	
+
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDCFG1, &reg_data);
 	if (ret)
 		return ret;
-	wdt_per = no_os_field_get(OPN_MASK, reg_data) + no_os_field_get(CLO_MASK, reg_data);
+	wdt_per = no_os_field_get(OPN_MASK, reg_data) + no_os_field_get(CLO_MASK,
+		  reg_data);
 	no_os_udelay(70);
-	
+
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDCFG2, &reg_data);
 	if (ret)
 		return ret;
 	ud_val = no_os_field_get(UD_MASK, reg_data);
-	
-	return sprintf(buf, "%dus", 8*(wdt_per+2) * WDT_BASE_TO * (clkdiv + 1) * ((ud_val * 2)+1));
+
+	return sprintf(buf, "%dus",
+		       8 * (wdt_per + 2) * WDT_BASE_TO * (clkdiv + 1) * ((ud_val * 2) +1));
 
 }
 
@@ -2358,7 +2375,7 @@ static int max42500_iio_read_1ud(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_1ud(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				  const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -2375,8 +2392,8 @@ static int max42500_iio_write_1ud(void *dev, char *buf, uint32_t len,
 	if (ret)
 		return ret;
 
-	return max42500_reg_update(max42500, MAX42500_REG_WDCFG2, UD_MASK, 
-					no_os_field_prep(UD_MASK, value));
+	return max42500_reg_update(max42500, MAX42500_REG_WDCFG2, UD_MASK,
+				   no_os_field_prep(UD_MASK, value));
 }
 
 /**
@@ -2390,7 +2407,7 @@ static int max42500_iio_write_1ud(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_wdkey(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				   const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t reg_data;
@@ -2420,8 +2437,9 @@ static int max42500_iio_read_wdkey(void *dev, char *buf, uint32_t len,
  * @return ret    - Result of the reading procedure.
  * 		    In case of success, the size of the read data is returned.
  */
-static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info *channel, intptr_t priv)
+static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2430,15 +2448,15 @@ static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf, uint32_
 
 	if (!dev)
 		return -EINVAL;
-	
+
 	iio_max42500 = (struct max42500_iio_dev *)dev;
 	max42500 = iio_max42500->max42500_dev;
-	
+
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDCFG2, &value);
 	if (ret)
 		return ret;
-	
-	
+
+
 	return sprintf(buf, "%s", max42500_state[no_os_field_get(WDEN_MASK, value)]);
 }
 
@@ -2453,7 +2471,7 @@ static int max42500_iio_get_watchdog_enable_status(void *dev, char *buf, uint32_
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_set_watchdog_enable(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info *channel, intptr_t priv)
+		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2462,14 +2480,14 @@ static int max42500_iio_set_watchdog_enable(void *dev, char *buf, uint32_t len,
 
 	if (!dev)
 		return -EINVAL;
-	
+
 	iio_max42500 = (struct max42500_iio_dev *)dev;
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = iio_parse_value(buf, IIO_VAL_INT, &value, NULL);
 	if (ret)
 		return ret;
-	
+
 	return max42500_set_watchdog_enable(max42500, value);
 }
 
@@ -2483,8 +2501,9 @@ static int max42500_iio_set_watchdog_enable(void *dev, char *buf, uint32_t len,
  * @return ret    - Result of the reading procedure.
  * 		    In case of success, the size of the read data is returned.
  */
-static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info *channel, intptr_t priv)
+static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2493,15 +2512,15 @@ static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf, uint32_t len
 
 	if (!dev)
 		return -EINVAL;
-	
+
 	iio_max42500 = (struct max42500_iio_dev *)dev;
 	max42500 = iio_max42500->max42500_dev;
-	
+
 	ret = max42500_reg_read(max42500, MAX42500_REG_WDLOCK, &value);
 	if (ret)
 		return ret;
-	
-	
+
+
 	return sprintf(buf, "%s", max42500_state[no_os_field_get(WDLOCK_MASK, value)]);
 }
 
@@ -2515,8 +2534,9 @@ static int max42500_iio_get_watchdog_lock_bit(void *dev, char *buf, uint32_t len
  * @return ret    - Result of the reading procedure.
  * 		    In case of success, the size of the read data is returned.
  */
-static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf, uint32_t len,
-			     const struct iio_ch_info *channel, intptr_t priv)
+static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2525,16 +2545,16 @@ static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf, uint32_t len
 
 	if (!dev)
 		return -EINVAL;
-	
+
 	iio_max42500 = (struct max42500_iio_dev *)dev;
 	max42500 = iio_max42500->max42500_dev;
 
 	ret = iio_parse_value(buf, IIO_VAL_INT, &value, NULL);
 	if (ret)
 		return ret;
-	
-	return max42500_reg_update(max42500, MAX42500_REG_WDLOCK, WDLOCK_MASK, 
-				no_os_field_prep(WDLOCK_MASK, value));
+
+	return max42500_reg_update(max42500, MAX42500_REG_WDLOCK, WDLOCK_MASK,
+				   no_os_field_prep(WDLOCK_MASK, value));
 }
 
 /**
@@ -2548,7 +2568,7 @@ static int max42500_iio_set_watchdog_lock_bit(void *dev, char *buf, uint32_t len
  * 		    In case of success, the size of the read data is returned.
 */
 static int max42500_iio_read_rstctrl(void *dev, char *buf, uint32_t len,
-					const struct iio_ch_info *channel, intptr_t priv)
+				     const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	uint8_t value;
@@ -2589,7 +2609,7 @@ static int max42500_iio_read_rstctrl(void *dev, char *buf, uint32_t len,
  * 		    In case of success, the size of the read data is returned.
  */
 static int max42500_iio_write_rstctrl(void *dev, char *buf, uint32_t len,
-				    const struct iio_ch_info *channel, intptr_t priv)
+				      const struct iio_ch_info *channel, intptr_t priv)
 {
 	int ret;
 	int32_t value;
@@ -2615,9 +2635,9 @@ static int max42500_iio_write_rstctrl(void *dev, char *buf, uint32_t len,
 		mask = MR1_MASK;
 		break;
 	}
-    
-	max42500_reg_update(max42500, MAX42500_REG_RSTCTRL, mask, 
-					no_os_field_prep(mask, value));
+
+	max42500_reg_update(max42500, MAX42500_REG_RSTCTRL, mask,
+			    no_os_field_prep(mask, value));
 }
 
 
@@ -2634,7 +2654,7 @@ static int max42500_iio_write_rstctrl(void *dev, char *buf, uint32_t len,
  * @return 0 in case of success, an error code otherwise.
  */
 int max42500_iio_init(struct max42500_iio_dev **iio_dev,
-		     struct max42500_iio_dev_init_param *init_param)
+		      struct max42500_iio_dev_init_param *init_param)
 {
 	struct max42500_iio_dev *descriptor;
 	int ret;
@@ -2647,7 +2667,7 @@ int max42500_iio_init(struct max42500_iio_dev **iio_dev,
 		return -ENOMEM;
 
 	ret = max42500_init(&descriptor->max42500_dev,
-			   init_param->max42500_init_param);
+			    init_param->max42500_init_param);
 	if (ret)
 		goto free_desc;
 
